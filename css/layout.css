@@ -13,9 +13,6 @@ header.header {
   justify-content: space-between;
   align-items: end;
   padding: 1rem 2rem;
-  /* Mais espaço vertical */
-  /* gap: 2rem; */
-  /* Espaçamento entre os elementos do header */
 }
 
 header .logo {

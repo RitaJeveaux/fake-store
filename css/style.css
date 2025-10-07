@@ -1,123 +1,37 @@
-/* ==========================
-   Estilos base do projeto Fakely
-   ========================== */
-
 :root {
-  --primary: #007b83;
-  --secondary: #ff6b6b;
-  --background: #f8f9fa;
-  --text: #343a40;
-  --border: #ced4da;
-  --font-main: Tahoma, Geneva, Verdana, monospace, sans-serif;
+  --primary: #007B83;
+  --primary-dark: #00474F;
+  --secondary: #FF6F61;
+  --accent: #FFD166;
+  --background: #F8F9FA;
+  --text: #333333;
+  --text-light: #666666;
+  --border: #E0E0E0;
+  --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 body {
-  font-family: var(--font-main);
   background-color: var(--background);
   color: var(--text);
   display: flex;
   flex-direction: column;
+  font-family: var(--font-main);
   min-height: 100vh;
-}
-
-/* ================= HEADER ================= */
-header.header {
-  background-color: var(--primary);
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-  padding: 1rem 3rem;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  border-bottom: solid 1px var(--secondary);
-}
-
-header .logo {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-header .logo img {
-  width: 100%;
-  height: 200px;
-  gap: 0px;
-}
-
-#welcome-msg {
-  margin-left: 20px;
-  background-color: transparent; 
-  border: none; 
-  color: white; 
-  font-size: 1.25rem; 
-  /* font-weight: bold; */
-}
-
-/* header .search-bar {
-  display: flex;
-  align-items: center;
-} */
-
-/* header .search-bar input {
-  padding: 0.5rem;
-  border: 1px solid var(--border);
-  border-radius: 5px 0 0 5px;
-  outline: none;
-} */
-
-/* header .search-bar button {
-  padding: 0.5rem 1rem;
-  border: none;
-  background-color: var(--secondary);
-  color: white;
-  border-radius: 0 5px 5px 0;
-  cursor: pointer;
-  transition: background 0.3s;
-} */
-
-/* header .search-bar button:hover {
-  background-color: #ff5252;
-} */
-
-header .actions ul {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-left: 60px;
-}
-
-header .actions ul li{
-  padding: 3px;
-}
-
-header .actions ul li button {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1.25rem;
-  cursor: pointer;
-  margin-left: 1rem;
-  transition: transform 0.2s;
-}
-
-header .actions button:hover {
-  transform: scale(1.1);
 }
 
 /* ================= MAIN ================= */
 .products-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
-  padding: 2rem;
   flex-grow: 1;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  padding: 2rem;
 }
 
 .product-card {
@@ -130,15 +44,15 @@ header .actions button:hover {
 }
 
 .product-card:hover {
-  transform: translateY(-5px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
 }
 
 .product-card img {
-  width: 100%;
   height: 180px;
-  object-fit: contain;
   margin-bottom: 0.5rem;
+  object-fit: contain;
+  width: 100%;
 }
 
 .product-card h3 {
@@ -147,18 +61,18 @@ header .actions button:hover {
 }
 
 .product-card .price {
-  font-weight: bold;
   color: var(--primary);
+  font-weight: bold;
   margin-bottom: 0.5rem;
 }
 
 .product-card button {
   background-color: var(--secondary);
-  color: white;
   border: none;
-  padding: 0.5rem 1rem;
   border-radius: 5px;
+  color: white;
   cursor: pointer;
+  padding: 0.5rem 1rem;
   transition: background 0.3s;
 }
 
@@ -168,17 +82,17 @@ header .actions button:hover {
 
 /* ================= ASIDE (CARRINHO) ================= */
 #cart-sidebar {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 300px;
-  height: 100%;
   background-color: white;
   border-left: 2px solid var(--border);
   box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+  height: 100%;
   padding: 1rem;
+  position: fixed;
+  right: 0;
+  top: 0;
   transform: translateX(100%);
   transition: transform 0.3s ease;
+  width: 300px;
   z-index: 100;
 }
 
@@ -197,32 +111,43 @@ header .actions button:hover {
 }
 
 #cart-sidebar li {
+  border-bottom: 1px solid var(--border);
   display: flex;
   justify-content: space-between;
   margin-bottom: 0.5rem;
-  border-bottom: 1px solid var(--border);
   padding-bottom: 0.5rem;
 }
 
 #checkout-btn {
   background-color: var(--primary);
-  color: white;
   border: none;
-  width: 100%;
-  padding: 0.7rem;
   border-radius: 5px;
+  color: white;
   cursor: pointer;
+  padding: 0.7rem;
+  width: 100%;
 }
 
 #checkout-btn:hover {
   background-color: #005b61;
 }
 
-/* ================= FOOTER ================= */
-footer {
-  background-color: var(--primary);
+/* ================= LOGIN  ================= */
+#login-login-btn {
+  background-color: var(--secondary);
   color: white;
-  text-align: center;
-  padding: 1rem;
-  font-size: 0.9rem;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+#login-login-btn:hover {
+  background-color: #D84E42;
+}
+
+.login-form-section {
+  align-items: center;
+  max-width: 80vh;
+  margin-left: 600px;
+  margin-top: 100px;
+  padding: 2rem;
 }

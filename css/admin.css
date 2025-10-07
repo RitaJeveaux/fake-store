@@ -1,0 +1,15 @@
+/* Unificando os estilos para os botões de ação do admin */
+#add-product-btn,
+#save-product-btn {
+  background-color: var(--secondary);
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease;
+  /* Adicionando uma transição suave */
+}
+
+#add-product-btn:hover,
+#save-product-btn:hover {
+  background-color: #D84E42;
+  /* Usando uma cor da paleta para o hover #E85D50 e #D84E42*/
+}

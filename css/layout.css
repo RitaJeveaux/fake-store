@@ -24,7 +24,7 @@ header .logo {
 }
 
 header .logo img {
-  height: 200px;
+  height: 160px;
   /* Aumenta a altura do logo */
   width: auto;
 }
@@ -43,6 +43,7 @@ header .actions ul {
   display: flex;
   gap: 1rem;
   list-style: none;
+  margin-right: 50px;
 }
 
 header .actions ul li {
@@ -61,7 +62,7 @@ header .actions ul li button {
   transition: transform 0.2s;
 }
 
-header .actions a:hover,
+
 header .actions button:hover {
   transform: scale(1.2);
 }

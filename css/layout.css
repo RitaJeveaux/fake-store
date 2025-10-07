@@ -1,29 +1,41 @@
-/* ==========================
-   Estilos do Layout (Header/Footer)
-   ========================== */
-
 /* ================= HEADER ================= */
 header.header {
   align-items: center;
   background-color: var(--primary);
-  border-bottom: solid 1px var(--secondary);
+  border-bottom: solid 2.5px var(--secondary);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-  padding: 1rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  height: 160px;
+  padding: 0.4rem 2rem 0.8rem 1rem;
+  position: relative;
+  box-sizing: border-box;
 }
 
 header .logo {
-  align-items: center;
+  grid-column: 1 / 2;
+  justify-self: start;
+  height: 120px;
+  overflow: hidden;
+  margin-top: 0px;
+  padding-top: 0px;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 header .logo img {
-  height: 160px;
-  /* Aumenta a altura do logo */
+  height: 15rem;
   width: auto;
+  object-fit: cover;
+}
+
+header #input-div {
+  grid-column: 2;
+  align-self: end;
+  justify-self: center;
+  text-align: center;
 }
 
 #welcome-msg {
@@ -31,8 +43,13 @@ header .logo img {
   border: none;
   color: white;
   font-size: 1.2rem;
-  margin-left: 0;
+  text-align: center;
+}
 
+header .actions {
+  grid-column: 3 / 4;
+  align-self: end;
+  justify-self: end;
 }
 
 header .actions ul {
@@ -40,7 +57,6 @@ header .actions ul {
   display: flex;
   gap: 1rem;
   list-style: none;
-  margin-right: 50px;
 }
 
 header .actions ul li {
@@ -59,7 +75,6 @@ header .actions ul li button {
   transition: transform 0.2s;
 }
 
-
 header .actions button:hover {
   transform: scale(1.2);
 }
@@ -67,11 +82,11 @@ header .actions button:hover {
 /* ================= FOOTER ================= */
 footer {
   background-color: var(--primary);
+  bottom: 0;
   color: white;
   font-size: 0.9rem;
   padding: 1rem;
-  text-align: center;
   position: fixed;
-  bottom: 0;
+  text-align: center;
   width: 100%;
 }

@@ -1,0 +1,228 @@
+/* ==========================
+   Estilos base do projeto Fakely
+   ========================== */
+
+:root {
+  --primary: #007b83;
+  --secondary: #ff6b6b;
+  --background: #f8f9fa;
+  --text: #343a40;
+  --border: #ced4da;
+  --font-main: Tahoma, Geneva, Verdana, monospace, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--background);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ================= HEADER ================= */
+header.header {
+  background-color: var(--primary);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  padding: 1rem 3rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-bottom: solid 1px var(--secondary);
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+header .logo img {
+  width: 100%;
+  height: 200px;
+  gap: 0px;
+}
+
+#welcome-msg {
+  margin-left: 20px;
+  background-color: transparent; 
+  border: none; 
+  color: white; 
+  font-size: 1.25rem; 
+  /* font-weight: bold; */
+}
+
+/* header .search-bar {
+  display: flex;
+  align-items: center;
+} */
+
+/* header .search-bar input {
+  padding: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 5px 0 0 5px;
+  outline: none;
+} */
+
+/* header .search-bar button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: var(--secondary);
+  color: white;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  transition: background 0.3s;
+} */
+
+/* header .search-bar button:hover {
+  background-color: #ff5252;
+} */
+
+header .actions ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: 60px;
+}
+
+header .actions ul li{
+  padding: 3px;
+}
+
+header .actions ul li button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.25rem;
+  cursor: pointer;
+  margin-left: 1rem;
+  transition: transform 0.2s;
+}
+
+header .actions button:hover {
+  transform: scale(1.1);
+}
+
+/* ================= MAIN ================= */
+.products-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+  flex-grow: 1;
+}
+
+.product-card {
+  background-color: white;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+}
+
+.product-card h3 {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+
+.product-card .price {
+  font-weight: bold;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.product-card button {
+  background-color: var(--secondary);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.product-card button:hover {
+  background-color: #ff5252;
+}
+
+/* ================= ASIDE (CARRINHO) ================= */
+#cart-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  background-color: white;
+  border-left: 2px solid var(--border);
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  z-index: 100;
+}
+
+#cart-sidebar.visible {
+  transform: translateX(0);
+}
+
+#cart-sidebar h2 {
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+#cart-sidebar ul {
+  list-style: none;
+  margin-bottom: 1rem;
+}
+
+#cart-sidebar li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+}
+
+#checkout-btn {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#checkout-btn:hover {
+  background-color: #005b61;
+}
+
+/* ================= FOOTER ================= */
+footer {
+  background-color: var(--primary);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+}

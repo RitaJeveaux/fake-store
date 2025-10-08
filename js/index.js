@@ -10,8 +10,8 @@ function getProducts() {
 function renderProducts(products) {
   productsContainer.innerHTML = '';
   products.forEach((product) => {
-    const li = document.createElement('li');
-    li.innerHTML = `
+    const card = document.createElement('div');
+    card.innerHTML = ` 
     <div class="product-card">
     <img src="${product.image}">
     <h3>${product.title}</h3>
@@ -19,13 +19,13 @@ function renderProducts(products) {
     <button>Buy Now</button>
     </div>  
   `;
-    
-    productsContainer.appendChild(li);
+
+    productsContainer.appendChild(card);
   });
 }
 
 function saveProducts(products) {
-    localStorage.setItem('fakely', JSON.stringify(products));
+  localStorage.setItem('fakely', JSON.stringify(products));
 }
 
 async function fetchProducts() {

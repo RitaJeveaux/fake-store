@@ -1,7 +1,7 @@
 // Proteção de rota
 const username = localStorage.getItem('username');
 if (username !== 'johnd') {
-    window.location.href = 'admin.html'
+    window.location.href = 'index.html';
 }
 
 const API_URL = 'https://fakestoreapi.com/products';
@@ -16,14 +16,24 @@ const deleteConfirmModal = new bootstrap.Modal(deleteConfirmModalElement);
 let products = [];
 let currentProductId = null;
 
-// Buscar produtos e renderizar a tabela
+// Carrega os produtos do localStorage ou busca na API como fallback
 async function fetchProducts() {
-    try {
-        const response = await fetch(API_URL);
-        products = await response.json();
+    const cachedProducts = getProducts();
+
+    if (cachedProducts.length > 0) {
+        console.log('Loading products from localStorage.');
+        products = cachedProducts;
         renderProducts();
-    } catch (error) {
-        console.error('Error searching for products:', error);
+    } else {
+        console.log('localStorage is empty. Fetching from API...');
+        try {
+            const response = await fetch(API_URL);
+            products = await response.json();
+            renderProducts();
+            saveProducts(products);
+        } catch (error) {
+            console.error('Error fetching products from API:', error);
+        }
     }
 }
 
@@ -35,7 +45,7 @@ function renderProducts() {
             <tr>
                 <td>${product.id}</td>
                 <td>${product.title}</td>
-                <td>$${product.price}</td>
+                <td>$ ${product.price}</td>
                 <td>
                     <button class="btn btn-sm btn-warning" onclick="openEditModal(${product.id})">Edit</button>
                     <button class="btn btn-sm btn-danger" onclick="openDeleteModal(${product.id})">Delete</button>
@@ -44,6 +54,15 @@ function renderProducts() {
         `;
         productsTableBody.innerHTML += row;
     });
+}
+
+function saveProducts(products) {
+    localStorage.setItem('fakely', JSON.stringify(products));
+}
+
+function getProducts() {
+    const products = localStorage.getItem('fakely');
+    return products ? JSON.parse(products) : [];
 }
 
 // Abrir modal de edição
@@ -107,6 +126,8 @@ productForm.addEventListener('submit', async (event) => {
             products.push({ ...productData, id: result.id || (products.length > 0 ? Math.max(...products.map(p => p.id)) + 1 : 1) });
         }
         renderProducts();
+        saveProducts(products);
+        document.activeElement.blur();
         productModal.hide();
 
     } catch (error) {
@@ -122,6 +143,8 @@ document.getElementById('confirm-delete-btn').addEventListener('click', async ()
         // A API de teste não atualiza o servidor, então vamos simular
         products = products.filter(p => p.id !== currentProductId);
         renderProducts();
+        document.activeElement.blur();
+        saveProducts(products);
         deleteConfirmModal.hide();
         currentProductId = null;
     } catch (error) {

@@ -12,7 +12,7 @@ formLogin.addEventListener('submit', async (event) => {
     try {
         const response = await fetch('https://fakestoreapi.com/auth/login', {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 username: username,
                 password: password
@@ -22,17 +22,17 @@ formLogin.addEventListener('submit', async (event) => {
         if (response.ok) {
             const data = await response.json();
             localStorage.setItem('username', username);
-            if (username === 'johnd'){
+            if (username === 'johnd') {
                 window.location.href = 'admin.html';
             } else {
                 window.location.href = 'index.html'
             }
         } else {
-            alert('Erro nas informações de login!');
+            alert('Login information error!');
         }
 
     } catch (error) {
         console.error('Error:', error);
-        alert('Ocorreu um erro no login');
+        alert('A login error occurred!');
     }
-})
+});

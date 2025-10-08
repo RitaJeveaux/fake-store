@@ -32,8 +32,18 @@ document.addEventListener('DOMContentLoaded', () => {
       const username = localStorage.getItem('username');
       const boasVindas = document.getElementById('welcome-msg');
       if (boasVindas && username) { // Verifica se o usuário está logado
-        boasVindas.value = `Welcome, ${username}!`;
+        boasVindas.value = `Welcome, ${username}!`; // Isso é um input, então .value está correto.
+      }
+
+      // Adiciona o event listener para o botão de logout AQUI
+      const botaoLogout = document.getElementById('logout-btn');
+      if (botaoLogout) {
+        botaoLogout.addEventListener('click', () => {
+          localStorage.removeItem('username');
+          window.location.href = 'index.html';
+        });
       }
     });
+
   loadComponent('footer.html', 'footer');
 });

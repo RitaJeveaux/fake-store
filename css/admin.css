@@ -1,15 +1,31 @@
 /* Unificando os estilos para os botões de ação do admin */
+
 #add-product-btn,
-#save-product-btn,
-#confirm-delete-btn {
-  background-color: var(--secondary);
-  border: none;
+#save-product-btn {
+  background-color: var(--primary);
   color: white;
   transition: background-color 0.3s ease;
 }
 
+
 #add-product-btn:hover,
-#save-product-btn:hover,
+#save-product-btn:hover {
+  background-color: var(--primary-dark);
+}
+
+.btn-danger,
+#confirm-delete-btn {
+  background-color: #FF6F61;
+
+}
+
+.btn-danger,
 #confirm-delete-btn:hover {
   background-color: #D84E42;
+}
+
+.btn-warning {
+  background-color: var(--accent);
+  border: none;
+  color: var(--text);
 }

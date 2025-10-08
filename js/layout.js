@@ -4,10 +4,11 @@ document.addEventListener('DOMContentLoaded', () => {
    * @param {string} url - A URL do arquivo HTML do componente.
    * @param {string} selector - O seletor CSS do elemento onde o componente será inserido.
    */
+
   const loadComponent = (url, selector) => {
     const element = document.querySelector(selector);
     if (element) {
-      fetch(url)
+      return fetch(url) // Retornar a promise
         .then(response => {
           if (!response.ok) {
             throw new Error(`Network response was not ok for ${url}`);
@@ -25,6 +26,14 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // Carrega o cabeçalho e o rodapé em todas as páginas
-  loadComponent('header.html', 'header.header');
+  loadComponent('header.html', 'header.header')
+    .then(() => {
+      // Este código só executa DEPOIS que o header.html foi carregado
+      const username = localStorage.getItem('username');
+      const boasVindas = document.getElementById('welcome-msg');
+      if (boasVindas && username) { // Verifica se o usuário está logado
+        boasVindas.value = `Welcome, ${username}!`;
+      }
+    });
   loadComponent('footer.html', 'footer');
 });

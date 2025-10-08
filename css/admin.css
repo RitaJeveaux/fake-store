@@ -1,6 +1,7 @@
 /* Unificando os estilos para os botões de ação do admin */
 #add-product-btn,
-#save-product-btn {
+#save-product-btn,
+#confirm-delete-btn {
   background-color: var(--secondary);
   border: none;
   color: white;
@@ -8,6 +9,7 @@
 }
 
 #add-product-btn:hover,
-#save-product-btn:hover {
+#save-product-btn:hover,
+#confirm-delete-btn:hover {
   background-color: #D84E42;
 }

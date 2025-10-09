@@ -1,7 +1,7 @@
 const formLogin = document.getElementById('login-form');
 const errorModal = document.getElementById('error-modal');
 const errorMessage = document.getElementById('error-message');
-const closeBtn = document.querySelector('.close-btn');
+const closeBtn = document.querySelector('.error-close-btn');
 
 function showErrorModal(message) {
     errorMessage.textContent = message;

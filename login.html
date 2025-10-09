@@ -7,10 +7,8 @@
   <meta name="author" content="© [2025] [Rita Jeveaux]">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <title>Fakely | Login</title>
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/login.css">
-
+  <link rel="stylesheet" href="css/style.css"> <!-- Contém :root e estilos base, e importa layout.css -->
+  <link rel="stylesheet" href="css/login.css"> <!-- Estilos específicos da página de login -->
 </head>
 
 <body>
@@ -38,10 +36,10 @@
   <footer>
   </footer>
 
-  
-  <div id="error-modal" class="modal">
-    <div class="modal-content">
-      <span class="close-btn">&times;</span>
+
+  <div id="error-modal" class="error-modal">
+    <div class="error-modal-content">
+      <span class="error-close-btn">&times;</span>
       <p id="error-message"></p>
     </div>
   </div>

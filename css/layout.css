@@ -70,7 +70,8 @@ header .actions ul li button {
   cursor: pointer;
   font-size: 1.2rem;
   margin-left: 1rem;
-  display: inline-block; /* Adicionado para garantir que o transform funcione */
+  display: inline-block;
+
   text-decoration: none;
   transition: transform 0.2s;
 }

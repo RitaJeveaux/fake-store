@@ -12,3 +12,5 @@ Identidade visual e nome criados em colaboração com o ChatGPT (OpenAI), explor
 listar possiveis logins para a Fakely
 
 avisar que somente o johnd tem acesso a pagina do admin
+
+https://ritajeveaux.github.io/fake-store/index.html

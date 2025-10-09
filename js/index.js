@@ -1,4 +1,4 @@
-let products = []; // Mantém a lista de produtos globalmente
+let products = [];
 const API_URL = 'https://fakestoreapi.com/products';
 
 function getProducts() {
@@ -46,7 +46,6 @@ async function fetchProducts(productsContainer) {
   }
 }
 
-// Funções do Modal
 function showProductModal(product, productDetailModal) {
   const modalBodyContent = document.getElementById('modal-body-content');
   if (!productDetailModal || !modalBodyContent) return;
@@ -62,7 +61,6 @@ function showProductModal(product, productDetailModal) {
   `;
   productDetailModal.style.display = 'block';
 
-  // Adicionar evento ao botão "Buy" do modal
   const modalBuyBtn = modalBodyContent.querySelector('.modal-buy-btn');
   modalBuyBtn.addEventListener('click', () => {
     console.log(`Produto ${product.id} adicionado ao carrinho!`); // Lógica de compra aqui
@@ -75,7 +73,7 @@ function hideProductModal(productDetailModal) {
   productDetailModal.style.display = 'none';
 }
 
-// Executa o código quando o DOM estiver completamente carregado
+
 document.addEventListener('DOMContentLoaded', () => {
   const productsContainer = document.getElementById('products-container');
   const productDetailModal = document.getElementById('product-detail-modal');
@@ -92,3 +90,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+fetchProducts();

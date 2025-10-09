@@ -4,28 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="ico" href="assets/favicon.ico">
     <title>Fakely | Online Store</title>
     <meta name="author" content="© [2025] [Rita Jeveaux]">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="icon" type="image/png" href="assets/favicon.ico">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/layout.css">
 </head>
 
 <body>
     <!-- ================= HEADER ================= -->
     <header class="header">
+
     </header>
 
     <!-- ================= MAIN ================= -->
     <main class="products-container" id="products-container">
-        
+
     </main>
 
     <!-- ================= ASIDE (CARRINHO) ================= -->
     <aside id="cart-sidebar">
         <h2>My Cart</h2>
         <ul id="cart-items">
-            <!-- Cart items will be inserted dynamically -->
         </ul>
         <p>Total: <span id="cart-total">$ 0.00</span></p>
         <button id="checkout-btn">Checkout</button>
@@ -33,8 +33,17 @@
 
     <!-- ================= FOOTER ================= -->
     <footer>
-        <!-- O conteúdo do rodapé será carregado aqui via JavaScript -->
     </footer>
+
+    <!-- ================= MODAL DETALHES DO PRODUTO ================= -->
+    <div id="product-detail-modal" class="product-detail-modal">
+        <div class="product-detail-modal-content">
+            <span class="product-detail-close-btn">&times;</span>
+            <div id="modal-body-content">
+                <!-- O conteúdo do produto será injetado aqui pelo JavaScript -->
+            </div>
+        </div>
+    </div>
 
     <!-- ================= SCRIPTS ================= -->
     <script src="js/layout.js"></script>

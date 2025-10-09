@@ -152,5 +152,4 @@ document.getElementById('confirm-delete-btn').addEventListener('click', async ()
     }
 });
 
-
 fetchProducts();

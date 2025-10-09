@@ -23,6 +23,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   loadComponent('header.html', 'header.header')
     .then(() => {
+      // Aplica a classe .fixed-top apenas na página de admin para corrigir o "pulo" do modal
+      if (window.location.pathname.endsWith('admin.html')) {
+        const header = document.querySelector('header.header');
+        if (header) header.classList.add('fixed-top');
+      }
+
       const username = localStorage.getItem('username');
       const boasVindas = document.getElementById('welcome-msg');
       if (boasVindas && username) {

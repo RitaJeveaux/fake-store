@@ -1,4 +1,21 @@
 const formLogin = document.getElementById('login-form');
+const errorModal = document.getElementById('error-modal');
+const errorMessage = document.getElementById('error-message');
+const closeBtn = document.querySelector('.error-close-btn');
+
+function showErrorModal(message) {
+    errorMessage.textContent = message;
+    errorModal.style.display = 'block';
+}
+
+function hideErrorModal() {
+    errorModal.style.display = 'none';
+}
+
+closeBtn.addEventListener('click', hideErrorModal);
+window.addEventListener('click', (event) => {
+    if (event.target == errorModal) hideErrorModal();
+});
 
 formLogin.addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -28,11 +45,11 @@ formLogin.addEventListener('submit', async (event) => {
                 window.location.href = 'index.html'
             }
         } else {
-            alert('Login information error!');
+            showErrorModal('Please check your username and password.');
         }
 
     } catch (error) {
         console.error('Error:', error);
-        alert('A login error occurred!');
+        showErrorModal('A login error occurred! Please try again later.');
     }
 });

@@ -1,3 +1,5 @@
+@import url('layout.css');
+
 :root {
   --primary: #007B83;
   --primary-dark: #00474F;
@@ -17,6 +19,11 @@
   padding: 0;
 }
 
+html {
+  overflow-y: scroll;
+  /* Força a barra de rolagem a ficar sempre visível, evitando "pulos" no layout */
+}
+
 body {
   background-color: var(--background);
   color: var(--text);
@@ -24,7 +31,6 @@ body {
   flex-direction: column;
   font-family: var(--font-main);
   min-height: 100vh;
-  position: absolute;
   width: 100%;
 
 }
@@ -140,26 +146,91 @@ body {
   background-color: #005b61;
 }
 
-/* ================= LOGIN  ================= */
-.login-form-section {
-  height: 66vh;
+/* ================= MODAL DETALHES DO PRODUTO ================= */
+.product-detail-modal {
+  display: none;
+  /* Oculto por padrão */
+  position: fixed;
+  z-index: 1050;
+  /* Acima do header */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Fundo escurecido */
 }
 
-#login-login-btn {
+.product-detail-modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 25px;
+  border: 1px solid var(--border);
+  width: 90%;
+  max-width: 600px;
+  border-radius: 8px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border-top: 5px solid var(--primary);
+}
+
+.product-detail-close-btn {
+  color: #aaa;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.product-detail-close-btn:hover,
+.product-detail-close-btn:focus {
+  color: black;
+  text-decoration: none;
+}
+
+.modal-product-image {
+  max-width: 100%;
+  height: 200px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.modal-product-title {
+  font-size: 1.5rem;
+  color: var(--primary-dark);
+  margin-bottom: 1rem;
+}
+
+.modal-product-description {
+  font-size: 1rem;
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.modal-product-price {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+}
+
+.modal-buy-btn {
   background-color: var(--secondary);
   color: white;
   border: none;
-  transition: background-color 0.3s ease;
+  border-radius: 5px;
+  padding: 0.75rem 2rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
 }
 
-#login-login-btn:hover {
-  background-color: #D84E42;
-}
-
-.login-form-section {
-  align-items: center;
-  max-width: 80vh;
-  margin-left: 600px;
-  margin-top: 100px;
-  padding: 2rem;
+.modal-buy-btn:hover {
+  background-color: var(--secondary-dark);
 }

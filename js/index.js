@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// --- API e manipulação dos Dados --
+// --- API e manipulação dos Dados ---
 
 function saveProducts(products) {
   localStorage.setItem('fakely', JSON.stringify(products));

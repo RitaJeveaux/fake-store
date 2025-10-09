@@ -85,7 +85,7 @@ function openDeleteModal(id) {
     deleteConfirmModal.show();
 }
 
-// Limpar formulário ao abrir modal para adicionar novo produto
+
 document.getElementById('add-product-btn').addEventListener('click', () => {
     currentProductId = null;
     productModalLabel.textContent = 'Add Product';
@@ -93,8 +93,6 @@ document.getElementById('add-product-btn').addEventListener('click', () => {
     document.getElementById('product-id').value = '';
 });
 
-
-// Lidar com o submit do formulário (Adicionar/Editar)
 productForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     const id = document.getElementById('product-id').value;
@@ -119,10 +117,10 @@ productForm.addEventListener('submit', async (event) => {
         console.log('Product saved:', result);
 
         // A API de teste não atualiza o servidor, então vamos simular
-        if (id) { // Edição
+        if (id) {
             const index = products.findIndex(p => p.id == id);
             products[index] = { ...products[index], ...productData, id: parseInt(id) };
-        } else { // Adição
+        } else {
             products.push({ ...productData, id: result.id || (products.length > 0 ? Math.max(...products.map(p => p.id)) + 1 : 1) });
         }
         renderProducts();
@@ -139,8 +137,6 @@ productForm.addEventListener('submit', async (event) => {
 document.getElementById('confirm-delete-btn').addEventListener('click', async () => {
     try {
         await fetch(`${API_URL}/${currentProductId}`, { method: 'DELETE' });
-
-        // A API de teste não atualiza o servidor, então vamos simular
         products = products.filter(p => p.id !== currentProductId);
         renderProducts();
         document.activeElement.blur();
@@ -148,6 +144,7 @@ document.getElementById('confirm-delete-btn').addEventListener('click', async ()
         deleteConfirmModal.hide();
         currentProductId = null;
     } catch (error) {
+        // colocar um modal aqui
         console.error('Error deleting product:', error);
     }
 });

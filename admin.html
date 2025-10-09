@@ -17,7 +17,7 @@
   <header class="header">
   </header>
 
-  <main class="container mt-4" style="flex-grow: 1">
+  <main class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-3">
       <h1>Manage Products</h1>
       <button id="add-product-btn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productModal">Add Product</button>
@@ -89,6 +89,24 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancel-delete-btn">Cancel</button>
           <button type="button" class="btn btn-danger" id="confirm-delete-btn">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Erro -->
+  <div class="modal fade" id="errorModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-danger">Error</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p id="error-message-text"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
     </div>

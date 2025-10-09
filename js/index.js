@@ -1,50 +1,60 @@
-let products = [];
+
 const API_URL = 'https://fakestoreapi.com/products';
+let products = [];
 
-function getProducts() {
-  const storedProducts = localStorage.getItem('fakely');
-  return storedProducts ? JSON.parse(storedProducts) : [];
-}
+// --- Event Listeners ---
 
-function renderProducts(products, productsContainer) {
-  if (!productsContainer) return;
-  productsContainer.innerHTML = '';
-  products.forEach((product) => {
-    const card = document.createElement('div'); // Usamos um container para o card
-    card.className = 'product-card';
-    card.innerHTML = `
-      <img src="${product.image}" alt="${product.title}">
-      <h3>${product.title}</h3>
-      <p class="price">$ ${product.price}</p>
-      <button class="buy-now-btn">Buy Now</button>
-    `;
+document.addEventListener('DOMContentLoaded', () => {
+  const productsContainer = document.getElementById('products-container');
+  const productDetailModal = document.getElementById('product-detail-modal');
+  const closeBtn = document.querySelector('.product-detail-close-btn');
 
-    const buyButton = card.querySelector('.buy-now-btn');
-    buyButton.addEventListener('click', () => showProductModal(product, document.getElementById('product-detail-modal')));
+  if (productsContainer) {
+    fetchAndRenderProducts(productsContainer);
+  }
 
-    productsContainer.appendChild(card);
-  });
-}
+  if (closeBtn && productDetailModal) {
+    closeBtn.addEventListener('click', () => hideProductModal(productDetailModal));
+    window.addEventListener('click', (event) => {
+      if (event.target === productDetailModal) {
+        hideProductModal(productDetailModal);
+      }
+    });
+  }
+});
+
+
+// --- API e manipulação dos Dados --
 
 function saveProducts(products) {
   localStorage.setItem('fakely', JSON.stringify(products));
 }
 
-async function fetchProducts(productsContainer) {
-  const cachedProducts = getProducts();
+function getProductsFromStorage() {
+  const storedProducts = localStorage.getItem('fakely');
+  return storedProducts ? JSON.parse(storedProducts) : [];
+}
+
+async function fetchAndRenderProducts(container) {
+  const cachedProducts = getProductsFromStorage();
 
   if (cachedProducts.length > 0) {
-    console.log('Loading products from localStorage.');
     products = cachedProducts;
-    renderProducts(products, productsContainer);
   } else {
-    console.log('localStorage is empty. Fetching from API...');
-    const response = await fetch(API_URL);
-    products = await response.json();
-    renderProducts(products, productsContainer);
-    saveProducts(products);
+    try {
+      const response = await fetch(API_URL);
+      products = await response.json();
+      saveProducts(products);
+    } catch (error) {
+      console.error('Failed to fetch products from API:', error);
+      container.innerHTML = '<p style="color:red; text-align:center;">Failed to load products. Please try again later.</p>';
+      return; // Interrompe a execução se a API falhar
+    }
   }
+  renderProducts(products, container);
 }
+
+// --- Renderização ---
 
 function showProductModal(product, productDetailModal) {
   const modalBodyContent = document.getElementById('modal-body-content');
@@ -53,17 +63,17 @@ function showProductModal(product, productDetailModal) {
   modalBodyContent.innerHTML = `
     <img src="${product.image}" alt="${product.title}" class="modal-product-image">
     <h2 class="modal-product-title">${product.title}</h2>
-    <p class="modal-product-description">${product.description}</p>
     <p class="modal-product-price">$ ${product.price}</p>
+    <p class="modal-product-description">${product.description}</p>
     <div class="modal-actions">
       <button class="modal-buy-btn">Buy</button>
     </div>
   `;
   productDetailModal.style.display = 'block';
 
-  const modalBuyBtn = modalBodyContent.querySelector('.modal-buy-btn');
-  modalBuyBtn.addEventListener('click', () => {
-    console.log(`Produto ${product.id} adicionado ao carrinho!`); // Lógica de compra aqui
+  modalBodyContent.querySelector('.modal-buy-btn').addEventListener('click', () => {
+    // TODO: Implementar lógica de adicionar ao carrinho
+    console.log(`Produto ${product.id} - ${product.title} adicionado ao carrinho!`);
     hideProductModal(productDetailModal);
   });
 }
@@ -73,22 +83,22 @@ function hideProductModal(productDetailModal) {
   productDetailModal.style.display = 'none';
 }
 
-
-document.addEventListener('DOMContentLoaded', () => {
-  const productsContainer = document.getElementById('products-container');
+function renderProducts(productsToRender, container) {
+  if (!container) return;
+  container.innerHTML = '';
   const productDetailModal = document.getElementById('product-detail-modal');
-  const closeBtn = document.querySelector('.product-detail-close-btn');
 
-  if (productsContainer) {
-    fetchProducts(productsContainer);
-  }
+  productsToRender.forEach((product) => {
+    const card = document.createElement('div');
+    card.className = 'product-card';
+    card.innerHTML = `
+      <img src="${product.image}" alt="${product.title}">
+      <h3>${product.title}</h3>
+      <p class="price">$ ${product.price.toFixed(2)}</p>
+      <button class="buy-now-btn">Buy Now</button>
+    `;
 
-  if (closeBtn && productDetailModal) {
-    closeBtn.addEventListener('click', () => hideProductModal(productDetailModal));
-    window.addEventListener('click', (event) => {
-      if (event.target == productDetailModal) hideProductModal(productDetailModal);
-    });
-  }
-});
-
-fetchProducts();
+    card.querySelector('.buy-now-btn').addEventListener('click', () => showProductModal(product, productDetailModal));
+    container.appendChild(card);
+  });
+}

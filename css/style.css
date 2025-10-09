@@ -24,7 +24,6 @@ body {
   flex-direction: column;
   font-family: var(--font-main);
   min-height: 100vh;
-  position: absolute;
   width: 100%;
 
 }
@@ -138,28 +137,4 @@ body {
 
 #checkout-btn:hover {
   background-color: #005b61;
-}
-
-/* ================= LOGIN  ================= */
-.login-form-section {
-  height: 66vh;
-}
-
-#login-login-btn {
-  background-color: var(--secondary);
-  color: white;
-  border: none;
-  transition: background-color 0.3s ease;
-}
-
-#login-login-btn:hover {
-  background-color: #D84E42;
-}
-
-.login-form-section {
-  align-items: center;
-  max-width: 80vh;
-  margin-left: 600px;
-  margin-top: 100px;
-  padding: 2rem;
 }

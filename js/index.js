@@ -54,7 +54,7 @@ async function fetchAndRenderProducts(container) {
   renderProducts(products, container);
 }
 
-// --- Renderização ---
+// --- Renderização Modal e Produtos ---
 
 function showProductModal(product, productDetailModal) {
   const modalBodyContent = document.getElementById('modal-body-content');

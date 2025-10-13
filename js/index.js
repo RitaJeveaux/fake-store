@@ -48,7 +48,7 @@ async function fetchAndRenderProducts(container) {
     } catch (error) {
       console.error('Failed to fetch products from API:', error);
       container.innerHTML = '<p style="color:red; text-align:center;">Failed to load products. Please try again later.</p>';
-      return; // Interrompe a execução se a API falhar
+      return; 
     }
   }
   renderProducts(products, container);
@@ -65,17 +65,8 @@ function showProductModal(product, productDetailModal) {
     <h2 class="modal-product-title">${product.title}</h2>
     <p class="modal-product-price">$ ${product.price}</p>
     <p class="modal-product-description">${product.description}</p>
-    <div class="modal-actions">
-      <button class="modal-buy-btn">Buy</button>
-    </div>
   `;
   productDetailModal.style.display = 'block';
-
-  modalBodyContent.querySelector('.modal-buy-btn').addEventListener('click', () => {
-    // TODO: Implementar lógica de adicionar ao carrinho
-    console.log(`Produto ${product.id} - ${product.title} adicionado ao carrinho!`);
-    hideProductModal(productDetailModal);
-  });
 }
 
 function hideProductModal(productDetailModal) {

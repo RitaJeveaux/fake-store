@@ -26,7 +26,7 @@ function saveProducts(products) {
 
 function getProducts() {
     const products = localStorage.getItem('fakely');
-    return products ? JSON.parse(products) : []; // Mantido para compatibilidade, mas getProductsFromStorage é mais claro.
+    return products ? JSON.parse(products) : [];
 }
 
 // --- Funções de Renderização e DOM ---
@@ -82,13 +82,14 @@ function setupEventListeners() {
 
     productForm.addEventListener('submit', async (event) => {
         event.preventDefault();
-        const id = document.getElementById('product-id').value;
+        const form = event.target;
+        const id = form.elements['product-id'].value;
         const productData = {
-            title: document.getElementById('product-title').value,
-            price: parseFloat(document.getElementById('product-price').value),
-            description: document.getElementById('product-description').value,
-            image: document.getElementById('product-image').value,
-            category: document.getElementById('product-category').value
+            title: form.elements['product-title'].value,
+            price: parseFloat(form.elements['product-price'].value.replace(',', '.')),
+            description: form.elements['product-description'].value,
+            image: form.elements['product-image'].value,
+            category: form.elements['product-category'].value
         };
 
         const method = id ? 'PUT' : 'POST';
@@ -102,10 +103,15 @@ function setupEventListeners() {
             });
             const result = await response.json();
             console.log('Product saved:', result); // Mantido para debug
+
             if (id) {
+                // Atualiza um produto existente
                 const index = products.findIndex(p => p.id == id);
-                products[index] = { ...products[index], ...productData, id: parseInt(id) };
+                if (index !== -1) {
+                    products[index] = { ...products[index], ...productData };
+                }
             } else {
+                // Adiciona um novo produto, garantindo um ID único
                 products.push({ ...productData, id: result.id || (products.length > 0 ? Math.max(...products.map(p => p.id)) + 1 : 1) });
             }
             renderProducts();

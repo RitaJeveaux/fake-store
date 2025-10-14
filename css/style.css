@@ -33,7 +33,6 @@ body {
   width: 100%;
 }
 
-/* ================= Index ================= */
 .products-container {
   display: grid;
   flex-grow: 1;
@@ -92,7 +91,6 @@ body {
   background-color: #ff5252;
 }
 
-/* ================= MODAL DETALHES DO PRODUTO ================= */
 .product-detail-modal {
   background-color: rgba(0, 0, 0, 0.5);
   display: none;
@@ -148,6 +146,21 @@ body {
   margin-bottom: 1rem;
 }
 
+.modal-product-category {
+  color: var(--text-light);
+  font-style: italic;
+  margin-bottom: 1rem;
+  text-transform: capitalize;
+}
+
+.modal-product-rating {
+  align-items: center;
+  color: var(--text-light);
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
 .modal-product-description {
   color: var(--text-light);
   font-size: 1rem;

@@ -2,8 +2,6 @@
 const API_URL = 'https://fakestoreapi.com/products';
 let products = [];
 
-// --- Event Listeners ---
-
 document.addEventListener('DOMContentLoaded', () => {
   const productsContainer = document.getElementById('products-container');
   const productDetailModal = document.getElementById('product-detail-modal');
@@ -23,8 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-
-// --- API e manipulação dos Dados ---
 
 function saveProducts(products) {
   localStorage.setItem('fakely', JSON.stringify(products));
@@ -48,24 +44,40 @@ async function fetchAndRenderProducts(container) {
     } catch (error) {
       console.error('Failed to fetch products from API:', error);
       container.innerHTML = '<p style="color:red; text-align:center;">Failed to load products. Please try again later.</p>';
-      return; 
+      return;
     }
   }
   renderProducts(products, container);
 }
 
-// --- Renderização Modal e Produtos ---
-function showProductModal(product, productDetailModal) {
+
+async function showProductModal(productId, productDetailModal) {
   const modalBodyContent = document.getElementById('modal-body-content');
   if (!productDetailModal || !modalBodyContent) return;
 
-  modalBodyContent.innerHTML = `
-    <img src="${product.image}" alt="${product.title}" class="modal-product-image">
-    <h2 class="modal-product-title">${product.title}</h2>
-    <p class="modal-product-price">$ ${product.price}</p>
-    <p class="modal-product-description">${product.description}</p>
-  `;
+  modalBodyContent.innerHTML = '<p>Loading product details...</p>';
   productDetailModal.style.display = 'block';
+
+  try {
+    const response = await fetch(`${API_URL}/${productId}`);
+    if (!response.ok) throw new Error('Product not found');
+    const product = await response.json();
+
+    modalBodyContent.innerHTML = `
+      <img src="${product.image}" alt="${product.title}" class="modal-product-image">
+      <h2 class="modal-product-title">${product.title}</h2>
+      <p class="modal-product-category">${product.category}</p>
+      <div class="modal-product-rating">
+        <span>⭐ ${product.rating.rate.toFixed(1)}</span>
+        <span>(${product.rating.count} reviews)</span>
+      </div>
+      <p class="modal-product-price">$ ${product.price.toFixed(2)}</p>
+      <p class="modal-product-description">${product.description}</p>
+    `;
+  } catch (error) {
+    console.error('Error fetching product details:', error);
+    modalBodyContent.innerHTML = '<p style="color:red;">Could not load product details. Please try again.</p>';
+  }
 }
 
 function hideProductModal(productDetailModal) {
@@ -88,7 +100,7 @@ function renderProducts(productsToRender, container) {
       <button class="buy-now-btn">Buy Now</button>
     `;
 
-    card.querySelector('.buy-now-btn').addEventListener('click', () => showProductModal(product, productDetailModal));
+    card.querySelector('.buy-now-btn').addEventListener('click', () => showProductModal(product.id, productDetailModal));
     container.appendChild(card);
   });
 }

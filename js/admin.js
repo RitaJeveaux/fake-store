@@ -13,8 +13,6 @@ const errorMessageText = document.getElementById('error-message-text');
 let products = [];
 let currentProductId = null;
 
-// --- Funções de Gerenciamento de Estado (LocalStorage) ---
-
 function getProductsFromStorage() {
     const storedProducts = localStorage.getItem('fakely');
     return storedProducts ? JSON.parse(storedProducts) : [];
@@ -28,8 +26,6 @@ function getProducts() {
     const products = localStorage.getItem('fakely');
     return products ? JSON.parse(products) : [];
 }
-
-// --- Funções de Renderização e DOM ---
 
 function renderProducts() {
     const tableRows = products.map(product => `
@@ -45,7 +41,6 @@ function renderProducts() {
     `).join('');
     productsTableBody.innerHTML = tableRows;
 }
-
 
 function showErrorModal(message) {
     errorMessageText.textContent = message;
@@ -69,8 +64,6 @@ function openDeleteModal(id) {
     currentProductId = id;
     deleteConfirmModal.show();
 }
-
-// --- Lógica de Inicialização e Event Listeners ---
 
 function setupEventListeners() {
     document.getElementById('add-product-btn').addEventListener('click', () => {

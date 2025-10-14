@@ -55,7 +55,6 @@ async function fetchAndRenderProducts(container) {
 }
 
 // --- Renderização Modal e Produtos ---
-
 function showProductModal(product, productDetailModal) {
   const modalBodyContent = document.getElementById('modal-body-content');
   if (!productDetailModal || !modalBodyContent) return;

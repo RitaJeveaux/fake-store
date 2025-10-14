@@ -6,6 +6,16 @@ O projeto conta com uma vitrine de produtos, uma área administrativa protegida 
 
 **[Acesse a demonstração ao vivo aqui!](https://ritajeveaux.github.io/fake-store/index.html)**
 
+## �🛠️ Tecnologias Utilizadas
+
+*   **HTML5**
+*   **CSS3**
+*   **Bootstrap:** Framework utilizado para agilizar o design da página de administração (`admin.html`).
+*   **JavaScript:** Responsável por toda a lógica da aplicação, manipulação do DOM e comunicação com a API.
+*   **LocalStorage:** Utilizado para manter o estado de login do usuário e para fazer cache da lista de produtos, otimizando o carregamento e permitindo a manipulação dos dados.
+*   **FakeStoreAPI:** API REST utilizada como backend para fornecer os dados dos produtos e usuários.
+
+
 ## ✨ Funcionalidades
 
 *   **Vitrine de Produtos (`index.html`):** Página principal que exibe todos os produtos disponíveis, com um design limpo e moderno criado com CSS3 puro.
@@ -34,13 +44,21 @@ Qualquer outro usuário da API pode fazer login, mas não terá acesso à págin
 *   **Usuário:** `mor_2314`
 *   **Senha:** `83r5^_`
 
-## 🛠️ Tecnologias Utilizadas
+## 🚀 Como Executar o Projeto
 
-*   **HTML5**
-*   **CSS3:** Utilizado para a estilização completa da página principal (`index.html`).
-*   **Bootstrap:** Framework utilizado para agilizar o design da página de administração (`admin.html`).
-*   **JavaScript:** Responsável por toda a lógica da aplicação, manipulação do DOM e comunicação com a API.
-*   **FakeStoreAPI:** API REST utilizada como backend para fornecer os dados dos produtos e usuários.
+Para executar o projeto em sua máquina local, siga os passos abaixo:
+
+1.  **Clone o repositório:**
+    ```bash
+    git clone https://github.com/ritajeveaux/fake-store.git
+    ```
+
+2.  **Navegue até o diretório do projeto:**
+    ```bash
+    cd fake-store
+    ```
+
+3.  **Abra o arquivo `index.html`** no seu navegador de preferência.
 
 ---
 

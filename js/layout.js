@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const loadComponent = (url, selector) => {
     const element = document.querySelector(selector);
     if (element) {
-      return fetch(url) // Retornar a promise
+      return fetch(url) 
         .then(response => {
           if (!response.ok) {
             throw new Error(`Network response was not ok for ${url}`);
@@ -23,12 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   loadComponent('header.html', 'header.header')
     .then(() => {
-      // Aplica a classe .fixed-top apenas na página de admin para corrigir o "pulo" do modal
-      if (window.location.pathname.endsWith('admin.html')) {
-        const header = document.querySelector('header.header');
-        if (header) header.classList.add('fixed-top');
-      }
-
       const username = localStorage.getItem('username');
       const boasVindas = document.getElementById('welcome-msg');
       if (boasVindas && username) {

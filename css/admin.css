@@ -26,3 +26,23 @@
   border: none;
   color: var(--text);
 }
+
+body.modal-open {
+  overflow: hidden !important;
+  padding-right: 0 !important;
+}
+
+.header .actions ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header .actions li {
+  display: inline-block;
+  margin-left: 1rem;
+}
+
+.header .actions button {
+  background: none;
+}

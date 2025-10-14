@@ -33,7 +33,6 @@ body {
   width: 100%;
 }
 
-/* ================= Index ================= */
 .products-container {
   display: grid;
   flex-grow: 1;
@@ -92,59 +91,6 @@ body {
   background-color: #ff5252;
 }
 
-/* ================= ASIDE (CARRINHO) ================= */
-#cart-sidebar {
-  background-color: white;
-  border-left: 2px solid var(--border);
-  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
-  height: 100%;
-  padding: 1rem;
-  position: fixed;
-  right: 0;
-  top: 0;
-  transform: translateX(100%);
-  transition: transform 0.3s ease;
-  width: 300px;
-  z-index: 100;
-}
-
-#cart-sidebar.visible {
-  transform: translateX(0);
-}
-
-#cart-sidebar h2 {
-  color: var(--primary);
-  margin-bottom: 1rem;
-}
-
-#cart-sidebar ul {
-  list-style: none;
-  margin-bottom: 1rem;
-}
-
-#cart-sidebar li {
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
-  padding-bottom: 0.5rem;
-}
-
-#checkout-btn {
-  background-color: var(--primary);
-  border: none;
-  border-radius: 5px;
-  color: white;
-  cursor: pointer;
-  padding: 0.7rem;
-  width: 100%;
-}
-
-#checkout-btn:hover {
-  background-color: #005b61;
-}
-
-/* ================= MODAL DETALHES DO PRODUTO ================= */
 .product-detail-modal {
   background-color: rgba(0, 0, 0, 0.5);
   display: none;
@@ -200,6 +146,21 @@ body {
   margin-bottom: 1rem;
 }
 
+.modal-product-category {
+  color: var(--text-light);
+  font-style: italic;
+  margin-bottom: 1rem;
+  text-transform: capitalize;
+}
+
+.modal-product-rating {
+  align-items: center;
+  color: var(--text-light);
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
 .modal-product-description {
   color: var(--text-light);
   font-size: 1rem;
